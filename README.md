@@ -1,5 +1,6 @@
 # Arena
-  
+  ![joystick](https://github.com/user-attachments/assets/b005ee9a-2ebc-492d-8ba3-0ddb7a3ff39c)
+
 ## Project: Real-Time Multiplayer Game Server (with Betting Feature)
 
 ---
