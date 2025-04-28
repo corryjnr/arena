@@ -1,4 +1,50 @@
-target/
+# Maven build
+/target/
+
+# Eclipse specific
+*.classpath
+*.project
+*.settings/
+
+# IntelliJ IDEA specific
+*.iml
+.idea/
+out/
+
+# NetBeans specific
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code specific
+.vscode/
+
+# Mac system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Spring Boot specific
+*.jar
+*.war
+*.ear
+
+# Application-specific
+.env
+
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -7,6 +53,7 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
@@ -16,4 +63,5 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-.idea
+# Ignore production properties
+application-prod.properties
