@@ -17,5 +17,5 @@ public class SystemAdmin {
     private Long id;
     private String name;
     @OneToOne
-    private User user;
+    private UserEntity user;
 }

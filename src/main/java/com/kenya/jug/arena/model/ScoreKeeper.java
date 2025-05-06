@@ -15,7 +15,7 @@ public class ScoreKeeper {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private boolean isApproved;
+    private Boolean isApproved;
     @OneToOne
-    private User user;
+    private UserEntity user;
 }

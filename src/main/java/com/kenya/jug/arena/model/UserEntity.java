@@ -12,13 +12,18 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
+    private String userId;
+    @Column(unique = true)
     private String email;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String password;
 
+    @Embedded
+    private EntityMetadata metadata;
 }
