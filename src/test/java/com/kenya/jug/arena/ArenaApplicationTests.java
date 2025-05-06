@@ -1,3 +1,4 @@
+package com.kenya.jug.arena;
 /*
  * MIT License
  *
@@ -21,20 +22,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-
-package com.kenya.jug.arena;
-
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ActiveProfiles;
-
 @SpringBootTest
 @ActiveProfiles("test")
 class ArenaApplicationTests {
-
+	@Autowired
+	private ApplicationContext applicationContext;
 	@Test
 	void contextLoads() {
+		Assertions.assertThat(applicationContext).isNotNull();
 	}
-
+	@Test
+	void mainApplicationClassLoads() {
+		String[] beanNames = applicationContext.getBeanDefinitionNames();
+		Assertions.assertThat(beanNames).isNotEmpty();
+		Assertions.assertThat(beanNames).contains("arenaApplication");
+	}
+	@Test
+	void mainMethodRunsWithoutException() {
+		Assertions.assertThatCode(() -> ArenaApplication.main(new String[]{})).doesNotThrowAnyException();
+	}
 }
