@@ -2,7 +2,7 @@ package com.kenya.jug.arena;
 /*
  * MIT License
  *
- * Copyright (c) 2025 Kenya Java UserEntity Group
+ * Copyright (c) 2025 Kenya Java User Group
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@ package com.kenya.jug.arena;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
