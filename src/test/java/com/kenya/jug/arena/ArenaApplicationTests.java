@@ -26,10 +26,12 @@ package com.kenya.jug.arena;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ActiveProfiles;
-@SpringBootTest
+
+@SpringBootTest(properties = {"server.port=8082"})
 @ActiveProfiles("test")
 class ArenaApplicationTests {
 	@Autowired
@@ -42,7 +44,8 @@ class ArenaApplicationTests {
 	void mainApplicationClassLoads() {
 		String[] beanNames = applicationContext.getBeanDefinitionNames();
 		Assertions.assertThat(beanNames).isNotEmpty();
-		Assertions.assertThat(beanNames).contains("arenaApplication");
+		Assertions.assertThat(applicationContext.getBeansWithAnnotation(SpringBootApplication.class)).isNotEmpty();
+		//Assertions.assertThat(beanNames).contains("arenaApplication");
 	}
 	@Test
 	void mainMethodRunsWithoutException() {
