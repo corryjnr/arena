@@ -16,21 +16,21 @@ Real-Time Multiplayer Game Server (with Betting Feature)
 <!-- coverage start -->
 ## 📊 Code Coverage Report
 
-**Overall Coverage: 32.46% ⚠️**
+**Overall Coverage: 32.97% ⚠️**
 
 | Metric      | Covered | Missed | Total | Coverage |
 |-------------|---------|--------|--------|----------|
-| INSTRUCTION | 236 | 491 | 727 | 32.46% ⚠️ |
-| LINE | 56 | 106 | 162 | 34.57% ⚠️ |
-| BRANCH | 2 | 28 | 30 | 6.67% ⚠️ |
+| INSTRUCTION | 240 | 488 | 728 | 32.97% ⚠️ |
+| LINE | 56 | 105 | 161 | 34.78% ⚠️ |
+| BRANCH | 2 | 26 | 28 | 7.14% ⚠️ |
 | METHOD | 22 | 28 | 50 | 44.00% ⚠️ |
 | CLASS | 9 | 5 | 14 | 64.29% ⚠️ |
-| COMPLEXITY | 23 | 42 | 65 | 35.38% ⚠️ |
+| COMPLEXITY | 23 | 41 | 64 | 35.94% ⚠️ |
 
 ### 🚨 Least Tested Elements (coverage below 50%)
-- INSTRUCTION: 32.46%
-- LINE: 34.57%
-- BRANCH: 6.67%
+- INSTRUCTION: 32.97%
+- LINE: 34.78%
+- BRANCH: 7.14%
 - METHOD: 44.00%
-- COMPLEXITY: 35.38%
-<!-- coverage end -->
+- COMPLEXITY: 35.94%
+
