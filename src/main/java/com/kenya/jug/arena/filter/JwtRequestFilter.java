@@ -48,7 +48,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private final AppUserDetailsService appUserDetailsService;
     private final JwtUtil jwtUtil;
 
-    private static final List<String> PUBLIC_URLS = List.of("/login", "/google-auth", "/register", "/send-reset-otp", "/reset-password", "/logout");
+    private static final List<String> PUBLIC_URLS = List.of("/login", "/register");
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -70,11 +70,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         //2. If not found in header, check cookies
         if (jwt == null) {
-            Cookie[] cookies = request.getCookies();
-            for (Cookie cookie : cookies) {
-                if ("jwt".equals(cookie.getName())) {
-                    jwt = cookie.getValue();
-                    break;
+            if(request.getCookies() != null){
+                Cookie[] cookies = request.getCookies();
+                for (Cookie cookie : cookies) {
+                    if ("jwt".equals(cookie.getName())) {
+                        jwt = cookie.getValue();
+                        break;
+                    }
                 }
             }
         }

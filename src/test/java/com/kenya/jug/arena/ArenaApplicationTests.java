@@ -35,17 +35,19 @@ import org.springframework.test.context.ActiveProfiles;
 class ArenaApplicationTests {
 	@Autowired
 	private ApplicationContext applicationContext;
+
 	@Test
 	void contextLoads() {
 		Assertions.assertThat(applicationContext).isNotNull();
 	}
+
 	@Test
 	void mainApplicationClassLoads() {
 		String[] beanNames = applicationContext.getBeanDefinitionNames();
 		Assertions.assertThat(beanNames).isNotEmpty();
 		Assertions.assertThat(applicationContext.getBeansWithAnnotation(SpringBootApplication.class)).isNotEmpty();
-		//Assertions.assertThat(beanNames).contains("arenaApplication");
 	}
+
 	@Test
 	void mainMethodRunsWithoutException() {
 		Assertions.assertThatCode(() -> ArenaApplication.main(new String[]{})).doesNotThrowAnyException();
