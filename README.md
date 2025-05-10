@@ -11,20 +11,26 @@ Real-Time Multiplayer Game Server (with Betting Feature)
 
 
 
+
+
 <!-- coverage start -->
 ## 📊 Code Coverage Report
 
-**Overall Coverage: 100.00% ✅**
+**Overall Coverage: 32.46% ⚠️**
 
-| Metric      | Covered | Missed | Total | Coverage  |
-|-------------|---------|--------|-------|-----------|
-| INSTRUCTION | 8       | 0      | 8     | 100.00% ✅ |
-| LINE        | 3       | 0      | 3     | 100.00% ✅ |
-| BRANCH      |         |        | 0     | 0% ⚠️     |
-| METHOD      | 2       | 0      | 2     | 100.00% ✅ |
-| CLASS       | 1       | 0      | 1     | 100.00% ✅ |
-| COMPLEXITY  | 2       | 0      | 2     | 100.00% ✅ |
+| Metric      | Covered | Missed | Total | Coverage |
+|-------------|---------|--------|--------|----------|
+| INSTRUCTION | 236 | 491 | 727 | 32.46% ⚠️ |
+| LINE | 56 | 106 | 162 | 34.57% ⚠️ |
+| BRANCH | 2 | 28 | 30 | 6.67% ⚠️ |
+| METHOD | 22 | 28 | 50 | 44.00% ⚠️ |
+| CLASS | 9 | 5 | 14 | 64.29% ⚠️ |
+| COMPLEXITY | 23 | 42 | 65 | 35.38% ⚠️ |
 
 ### 🚨 Least Tested Elements (coverage below 50%)
-- BRANCH: 0%
+- INSTRUCTION: 32.46%
+- LINE: 34.57%
+- BRANCH: 6.67%
+- METHOD: 44.00%
+- COMPLEXITY: 35.38%
 <!-- coverage end -->
