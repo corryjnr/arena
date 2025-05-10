@@ -1,4 +1,4 @@
-package com.kenya.jug.arena;
+package com.kenya.jug.arena.io;
 /*
  * MIT License
  *
@@ -23,33 +23,18 @@ package com.kenya.jug.arena;
  * SOFTWARE.
  */
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ActiveProfiles;
-@SpringBootTest
-@ActiveProfiles("test")
-class ArenaApplicationTests {
-	@Autowired
-	private ApplicationContext applicationContext;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-	@Test
-	void contextLoads() {
-		Assertions.assertThat(applicationContext).isNotNull();
-	}
-
-	@Test
-	void mainApplicationClassLoads() {
-		String[] beanNames = applicationContext.getBeanDefinitionNames();
-		Assertions.assertThat(beanNames).isNotEmpty();
-		Assertions.assertThat(applicationContext.getBeansWithAnnotation(SpringBootApplication.class)).isNotEmpty();
-	}
-
-	@Test
-	void mainMethodRunsWithoutException() {
-		Assertions.assertThatCode(() -> ArenaApplication.main(new String[]{})).doesNotThrowAnyException();
-	}
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class UserResponse {
+    private String userId;
+    private String firstName;
+    private String lastName;
+    private String email;
 }

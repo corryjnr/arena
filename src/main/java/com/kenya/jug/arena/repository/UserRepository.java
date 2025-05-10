@@ -1,4 +1,4 @@
-package com.kenya.jug.arena;
+package com.kenya.jug.arena.repository;
 /*
  * MIT License
  *
@@ -23,33 +23,12 @@ package com.kenya.jug.arena;
  * SOFTWARE.
  */
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ActiveProfiles;
-@SpringBootTest
-@ActiveProfiles("test")
-class ArenaApplicationTests {
-	@Autowired
-	private ApplicationContext applicationContext;
+import com.kenya.jug.arena.model.UserEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-	@Test
-	void contextLoads() {
-		Assertions.assertThat(applicationContext).isNotNull();
-	}
+import java.util.Optional;
 
-	@Test
-	void mainApplicationClassLoads() {
-		String[] beanNames = applicationContext.getBeanDefinitionNames();
-		Assertions.assertThat(beanNames).isNotEmpty();
-		Assertions.assertThat(applicationContext.getBeansWithAnnotation(SpringBootApplication.class)).isNotEmpty();
-	}
-
-	@Test
-	void mainMethodRunsWithoutException() {
-		Assertions.assertThatCode(() -> ArenaApplication.main(new String[]{})).doesNotThrowAnyException();
-	}
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    Optional<UserEntity> findByEmail(String email);
+    Boolean existsByEmail(String email);
 }

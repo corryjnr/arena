@@ -1,4 +1,4 @@
-package com.kenya.jug.arena;
+package com.kenya.jug.arena.exception;
 /*
  * MIT License
  *
@@ -23,33 +23,8 @@ package com.kenya.jug.arena;
  * SOFTWARE.
  */
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ActiveProfiles;
-@SpringBootTest
-@ActiveProfiles("test")
-class ArenaApplicationTests {
-	@Autowired
-	private ApplicationContext applicationContext;
-
-	@Test
-	void contextLoads() {
-		Assertions.assertThat(applicationContext).isNotNull();
-	}
-
-	@Test
-	void mainApplicationClassLoads() {
-		String[] beanNames = applicationContext.getBeanDefinitionNames();
-		Assertions.assertThat(beanNames).isNotEmpty();
-		Assertions.assertThat(applicationContext.getBeansWithAnnotation(SpringBootApplication.class)).isNotEmpty();
-	}
-
-	@Test
-	void mainMethodRunsWithoutException() {
-		Assertions.assertThatCode(() -> ArenaApplication.main(new String[]{})).doesNotThrowAnyException();
-	}
+public class AlreadyExistsException extends RuntimeException {
+    public AlreadyExistsException(String message) {
+        super(message);
+    }
 }

@@ -1,4 +1,4 @@
-package com.kenya.jug.arena;
+package com.kenya.jug.arena.model;
 /*
  * MIT License
  *
@@ -23,33 +23,27 @@ package com.kenya.jug.arena;
  * SOFTWARE.
  */
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ActiveProfiles;
-@SpringBootTest
-@ActiveProfiles("test")
-class ArenaApplicationTests {
-	@Autowired
-	private ApplicationContext applicationContext;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EntityListeners;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-	@Test
-	void contextLoads() {
-		Assertions.assertThat(applicationContext).isNotNull();
-	}
+import java.time.LocalDateTime;
 
-	@Test
-	void mainApplicationClassLoads() {
-		String[] beanNames = applicationContext.getBeanDefinitionNames();
-		Assertions.assertThat(beanNames).isNotEmpty();
-		Assertions.assertThat(applicationContext.getBeansWithAnnotation(SpringBootApplication.class)).isNotEmpty();
-	}
+@Embeddable
+@EntityListeners(AuditingEntityListener.class)
+public class EntityMetadata {
 
-	@Test
-	void mainMethodRunsWithoutException() {
-		Assertions.assertThatCode(() -> ArenaApplication.main(new String[]{})).doesNotThrowAnyException();
-	}
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    private boolean archived;
+    private String version;
+
+    @CreatedBy
+    @Column(updatable = false)
+    private Long createdBy;
 }

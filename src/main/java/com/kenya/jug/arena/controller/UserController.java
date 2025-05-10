@@ -1,4 +1,4 @@
-package com.kenya.jug.arena;
+package com.kenya.jug.arena.controller;
 /*
  * MIT License
  *
@@ -23,33 +23,29 @@ package com.kenya.jug.arena;
  * SOFTWARE.
  */
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ActiveProfiles;
-@SpringBootTest
-@ActiveProfiles("test")
-class ArenaApplicationTests {
-	@Autowired
-	private ApplicationContext applicationContext;
+import com.kenya.jug.arena.io.UserRequest;
+import com.kenya.jug.arena.io.UserResponse;
+import com.kenya.jug.arena.service.UserService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
+import org.springframework.web.bind.annotation.*;
 
-	@Test
-	void contextLoads() {
-		Assertions.assertThat(applicationContext).isNotNull();
-	}
+@RestController
+@RequiredArgsConstructor
+public class UserController {
 
-	@Test
-	void mainApplicationClassLoads() {
-		String[] beanNames = applicationContext.getBeanDefinitionNames();
-		Assertions.assertThat(beanNames).isNotEmpty();
-		Assertions.assertThat(applicationContext.getBeansWithAnnotation(SpringBootApplication.class)).isNotEmpty();
-	}
+    private final UserService userService;
 
-	@Test
-	void mainMethodRunsWithoutException() {
-		Assertions.assertThatCode(() -> ArenaApplication.main(new String[]{})).doesNotThrowAnyException();
-	}
+    @PostMapping("/register")
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserResponse register(@Valid @RequestBody UserRequest request) {
+        return userService.createUser(request);
+    }
+
+    @GetMapping("/user")
+    public UserResponse getUser(@CurrentSecurityContext(expression = "authentication?.name") String email) {
+        return userService.getUser(email);
+    }
 }
